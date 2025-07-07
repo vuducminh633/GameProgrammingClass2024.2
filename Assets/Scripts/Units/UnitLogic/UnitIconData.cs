@@ -20,6 +20,7 @@ public class UnitIconData : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         StoreInitialState(); // Store state when the icon first wakes up
         unitIcon = unitPrefab.GetComponent<SpriteRenderer>().sprite;
+      
     }
 
     public void StoreInitialState()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tran Quoc Toan
   m_EditorClassIdentifier: 
   charaName: Tran Quoc Toan
-  image: {fileID: -1933909524, guid: d4953fcb75a9df046bd01546e711d89b, type: 3}
+  image: {fileID: 21300000, guid: 8c3d5e8c43bedfa47a5fc7ac9caddc1e, type: 2}
   atk: 10
   hp: 100
   def: 10

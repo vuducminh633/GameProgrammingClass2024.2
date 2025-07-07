@@ -290,6 +290,7 @@ public class DragToScreenManager : MonoBehaviour
         {
             RedeploymentManager.Instance.OnRedeployReady -= OnRedeployReadyHandler; // Prevent double subscription
             RedeploymentManager.Instance.OnRedeployReady += OnRedeployReadyHandler;
+            Debug.Log("THIS IS CALLED");
             return;
         }
 
@@ -301,7 +302,10 @@ public class DragToScreenManager : MonoBehaviour
     private void OnRedeployReadyHandler(GameObject prefab)
     {
         // Unsubscribe to avoid memory leaks
-        
+        if (RedeploymentManager.Instance != null)
+        {
+            RedeploymentManager.Instance.OnRedeployReady -= OnRedeployReadyHandler;
+        }
 
         ReactivatePrefab(prefab);
     }
@@ -309,8 +313,11 @@ public class DragToScreenManager : MonoBehaviour
     // Actual logic to re-enable the prefab/icon in UI
     private void ReactivatePrefab(GameObject prefab)
     {
+ 
         foreach (UnitIconData icon in unitIcons)
         {
+            icon.gameObject.SetActive(true);
+          
             if (icon != null && icon.unitPrefab == prefab)
             {
                 // Found the matching icon!
@@ -331,10 +338,11 @@ public class DragToScreenManager : MonoBehaviour
                 ToggleRaycasts(iconRect, true);
 
                 // Re-activate the GameObject
-                if (!icon.gameObject.activeSelf)
-                {
-                    icon.gameObject.SetActive(true);
-                }
+                //if (!icon.gameObject.activeSelf)
+                //{
+                //    icon.gameObject.SetActive(true);
+                //    Debug.Log("THIS IS CALLED RETREAT ACTIVE");
+                //}
 
                 // Optional: Force layout group update on the original parent
                 if (icon.originalParent != null)

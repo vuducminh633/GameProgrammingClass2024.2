@@ -116,6 +116,8 @@ public class DirectionControlUI : MonoBehaviour
         chargeCooldownSlider = GameObject.Find("ChargeSkillSlider")?.GetComponent<Slider>();
         chargeskillButton.interactable = true;
 
+        directionCycleButtonObject = GameObject.Find("DirectionButton");
+
         //buff skill button active
         if (buffskillButton != null)
         {
@@ -208,7 +210,20 @@ public class DirectionControlUI : MonoBehaviour
             chargeskillButton.gameObject.SetActive(targetUnit is ChargeGeneralUnit);
         }
 
+        //SET UP THE DIRECTIONAL BUTTON
+        if (directionCycleButtonObject != null)
+        {
+            directionCycleButton = directionCycleButtonObject.GetComponent<Button>();
+            directionCycleButton.onClick.RemoveAllListeners();
+            directionCycleButton.onClick.AddListener(CycleDirection);
 
+            directionCycleButtonObject.SetActive(true);
+            StartCoroutine(CheckClickOutside());
+        }
+        else
+        {
+            Debug.LogError("Direction Cycle Button not assigned in Inspector!", this);
+        }
 
     }
 
@@ -223,136 +238,226 @@ public class DirectionControlUI : MonoBehaviour
 
     // --- Methods Called by Event Trigger on DirectionHandle CHILD ---
 
-    public void HandleBeginDrag(BaseEventData baseData)
+    //public void HandleBeginDrag(BaseEventData baseData)
+    //{
+    //    PointerEventData eventData = baseData as PointerEventData;
+    //    if (targetUnit == null) return;
+    //    if (!RectTransformUtility.RectangleContainsScreenPoint(handleRectTransform, eventData.position, eventData.pressEventCamera ?? eventCamera)) { eventData.pointerDrag = null; return; } // Ensure drag starts on handle
+    //    isDraggingHandle = true;
+    //    InputManager.SignalUIDragActive();
+
+    //    FindObjectOfType<SimpleCameraZoom>().ZoomTo(targetUnit.transform);
+    //    originalTimeScale = Time.timeScale;
+    //    Time.timeScale = dragTimeScale;
+
+    //}
+
+
+
+    //public void HandleDrag(BaseEventData baseData)
+    //{
+    //    if (!isDraggingHandle || targetUnit == null || handleRectTransform == null || panelRectTransform == null) return;
+    //    PointerEventData eventData = baseData as PointerEventData;
+
+    //    // Calculate pointer position relative to the PARENT PANEL's pivot
+    //    Vector2 localPoint;
+    //    RectTransformUtility.ScreenPointToLocalPointInRectangle(panelRectTransform, eventData.position, eventData.pressEventCamera ?? eventCamera, out localPoint);
+
+    //    // Snap direction 
+    //    Vector2 direction;
+    //    if (Mathf.Abs(localPoint.x) > Mathf.Abs(localPoint.y))
+    //        direction = (localPoint.x >= 0) ? Vector2.right : Vector2.left;
+    //    else
+    //        direction = (localPoint.y >= 0) ? Vector2.up : Vector2.down;
+
+    //    // Clamp to drag radius
+    //    Vector2 targetHandlePosition = direction * dragRadius;
+    //    handleRectTransform.anchoredPosition = targetHandlePosition;
+
+    //    // Update Handle Rotation
+    //    float visualAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    //    handleRectTransform.localRotation = Quaternion.Euler(0, 0, visualAngle - 90f);
+
+
+    //    // Update unit range direction and visibility
+    //    if (targetUnitRange != null)
+    //    {
+    //        bool outsideDeadZone = localPoint.magnitude >= deadZoneRadius;
+    //        if (outsideDeadZone)
+    //        {
+    //            targetUnitRange.ShowRangePreview(true);
+    //            targetUnitRange.transform.rotation = Quaternion.Euler(0, 0, visualAngle);
+    //        }
+    //    }
+
+    //}
+
+
+
+    //public void HandleEndDrag(BaseEventData baseData)
+    //{
+    //    if (!isDraggingHandle || targetUnit == null || handleRectTransform == null || panelRectTransform == null) return;
+    //    isDraggingHandle = false;
+
+    //    Time.timeScale = originalTimeScale;
+    //    FindObjectOfType<SimpleCameraZoom>().ResetZoom(); // on drag end
+
+    //    // Use the handle's FINAL Anchored Position relative to the panel center
+    //    Vector2 finalHandlePosition = handleRectTransform.anchoredPosition;
+    //    float finalDistance = finalHandlePosition.magnitude;
+
+    //    float finalAngleDegrees; // The angle we will apply to the Unit's Z rotation
+
+    //    // Inside HandleEndDrag method in DirectionControlUI.cs
+    //    if (finalDistance < deadZoneRadius)
+    //    {
+    //        finalAngleDegrees = defaultAngleDegrees;
+    //        ResetHandleVisuals();
+    //    }
+    //    else
+    //    {
+    //        // Existing code for outside deadzone...
+    //        Vector2 finalDirection = finalHandlePosition.normalized;
+    //        finalAngleDegrees = Mathf.Atan2(finalDirection.y, finalDirection.x) * Mathf.Rad2Deg;
+
+    //        // Flip sprite based on drag direction
+    //        targetUnit.SetFacingDirection(finalDirection);
+    //    }
+
+    //    // Create the final rotation for the UNIT using the calculated angle
+    //    Quaternion finalUnitRotation = Quaternion.Euler(0, 0, finalAngleDegrees);
+
+    //    // Hide the range preview now - before calling ConfirmPlacement
+    //    if (targetUnitRange != null)
+    //    {
+    //        targetUnitRange.ShowRangePreview(false);
+    //    }
+
+    //    // Confirm Placement (Unit handles state change & destroying this UI)
+    //    targetUnit.ConfirmPlacement(finalUnitRotation);
+
+    //    // Register Deployment
+    //    if (targetUnit.SourcePrefab != null) {
+
+    //        DeploymentManager.Instance?.RegisterDeployment(targetUnit.SourcePrefab);
+
+    //        //Call text update herreeeeeeee
+    //        UnitIconData iconData = UnitIconData.GetIconDataByPrefab(targetUnit.SourcePrefab);
+    //        if (iconData != null)
+    //        {
+    //            DeploymentAmountText deploymentText = iconData.GetComponentInChildren<DeploymentAmountText>();
+    //            if (deploymentText != null)
+    //            {
+    //                deploymentText.UpdateDeployCountText();
+    //            }
+    //        }
+
+    //    }
+    //    else { /* Log Error */ }
+
+    //    // Signal Drag End
+    //    InputManager.SignalUIDragInactive();
+    //    // This GameObject is destroyed by targetUnit.ConfirmPlacement()
+
+
+    //    // Hande the flip of Unit according to direction 
+
+
+
+
+    //}
+
+
+
+    //HANDLE THE DIRECTION CHOOSING LOGIC 
+    [SerializeField] private GameObject directionCycleButtonObject;
+    private Button directionCycleButton;
+    private int directionIndex = 0;
+    private Vector2[] directions = new Vector2[] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+    private Quaternion[] directionRotations = new Quaternion[]
     {
-        PointerEventData eventData = baseData as PointerEventData;
-        if (targetUnit == null) return;
-        if (!RectTransformUtility.RectangleContainsScreenPoint(handleRectTransform, eventData.position, eventData.pressEventCamera ?? eventCamera)) { eventData.pointerDrag = null; return; } // Ensure drag starts on handle
-        isDraggingHandle = true;
-        InputManager.SignalUIDragActive();
+    Quaternion.Euler(0, 0, 90),   // Up
+    Quaternion.Euler(0, 0, 0),    // Right
+    Quaternion.Euler(0, 0, -90),  // Down
+    Quaternion.Euler(0, 0, 180),  // Left
+    };
 
-        FindObjectOfType<SimpleCameraZoom>().ZoomTo(targetUnit.transform);
-        originalTimeScale = Time.timeScale;
-        Time.timeScale = dragTimeScale;
-
-    }
-
-
-
-    public void HandleDrag(BaseEventData baseData)
+    public void CycleDirection()
     {
-        if (!isDraggingHandle || targetUnit == null || handleRectTransform == null || panelRectTransform == null) return;
-        PointerEventData eventData = baseData as PointerEventData;
+        directionIndex = (directionIndex + 1) % directions.Length;
 
-        // Calculate pointer position relative to the PARENT PANEL's pivot
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(panelRectTransform, eventData.position, eventData.pressEventCamera ?? eventCamera, out localPoint);
+        Vector2 newDirection = directions[directionIndex];
+        float finalAngleDegrees = Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg;
 
-        // Snap direction 
-        Vector2 direction;
-        if (Mathf.Abs(localPoint.x) > Mathf.Abs(localPoint.y))
-            direction = (localPoint.x >= 0) ? Vector2.right : Vector2.left;
-        else
-            direction = (localPoint.y >= 0) ? Vector2.up : Vector2.down;
-
-        // Clamp to drag radius
-        Vector2 targetHandlePosition = direction * dragRadius;
-        handleRectTransform.anchoredPosition = targetHandlePosition;
-
-        // Update Handle Rotation
-        float visualAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        handleRectTransform.localRotation = Quaternion.Euler(0, 0, visualAngle - 90f);
-
-
-        // Update unit range direction and visibility
+        // Rotate range preview properly
         if (targetUnitRange != null)
         {
-            bool outsideDeadZone = localPoint.magnitude >= deadZoneRadius;
-            if (outsideDeadZone)
-            {
-                targetUnitRange.ShowRangePreview(true);
-                targetUnitRange.transform.rotation = Quaternion.Euler(0, 0, visualAngle);
-            }
+            targetUnitRange.ShowRangePreview(true);
+            targetUnitRange.transform.rotation = Quaternion.Euler(0, 0, finalAngleDegrees);
         }
 
+        // Flip sprite and set direction
+        targetUnit.SetFacingDirection(newDirection);
     }
 
-
-
-    public void HandleEndDrag(BaseEventData baseData)
+    private IEnumerator CheckClickOutside()
     {
-        if (!isDraggingHandle || targetUnit == null || handleRectTransform == null || panelRectTransform == null) return;
-        isDraggingHandle = false;
+        yield return null;
 
-        Time.timeScale = originalTimeScale;
-        FindObjectOfType<SimpleCameraZoom>().ResetZoom(); // on drag end
-
-        // Use the handle's FINAL Anchored Position relative to the panel center
-        Vector2 finalHandlePosition = handleRectTransform.anchoredPosition;
-        float finalDistance = finalHandlePosition.magnitude;
-
-        float finalAngleDegrees; // The angle we will apply to the Unit's Z rotation
-
-        // Inside HandleEndDrag method in DirectionControlUI.cs
-        if (finalDistance < deadZoneRadius)
+        while (true)
         {
-            finalAngleDegrees = defaultAngleDegrees;
-            ResetHandleVisuals();
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!RectTransformUtility.RectangleContainsScreenPoint(
+                    directionCycleButton.GetComponent<RectTransform>(),
+                    Input.mousePosition,
+                    eventCamera))
+                {
+                    ConfirmDirectionSelection();
+                    break;
+                }
+            }
+            yield return null;
         }
-        else
-        {
-            // Existing code for outside deadzone...
-            Vector2 finalDirection = finalHandlePosition.normalized;
-            finalAngleDegrees = Mathf.Atan2(finalDirection.y, finalDirection.x) * Mathf.Rad2Deg;
+    }
 
-            // Flip sprite based on drag direction
-            targetUnit.SetFacingDirection(finalDirection);
-        }
+    private void ConfirmDirectionSelection()
+    {
+        if (targetUnit == null) return;
 
-        // Create the final rotation for the UNIT using the calculated angle
+        Vector2 finalDirection = directions[directionIndex];
+        float finalAngleDegrees = Mathf.Atan2(finalDirection.y, finalDirection.x) * Mathf.Rad2Deg;
         Quaternion finalUnitRotation = Quaternion.Euler(0, 0, finalAngleDegrees);
 
-        // Hide the range preview now - before calling ConfirmPlacement
+        // Hide the range preview now
         if (targetUnitRange != null)
-        {
             targetUnitRange.ShowRangePreview(false);
-        }
 
-        // Confirm Placement (Unit handles state change & destroying this UI)
+        // Apply final placement
         targetUnit.ConfirmPlacement(finalUnitRotation);
 
-        // Register Deployment
-        if (targetUnit.SourcePrefab != null) {
-
+        // Register deployment
+        if (targetUnit.SourcePrefab != null)
+        {
             DeploymentManager.Instance?.RegisterDeployment(targetUnit.SourcePrefab);
 
-            //Call text update herreeeeeeee
             UnitIconData iconData = UnitIconData.GetIconDataByPrefab(targetUnit.SourcePrefab);
             if (iconData != null)
             {
                 DeploymentAmountText deploymentText = iconData.GetComponentInChildren<DeploymentAmountText>();
                 if (deploymentText != null)
-                {
                     deploymentText.UpdateDeployCountText();
-                }
             }
-
         }
-        else { /* Log Error */ }
 
-        // Signal Drag End
+        directionCycleButtonObject.SetActive(false);
         InputManager.SignalUIDragInactive();
-        // This GameObject is destroyed by targetUnit.ConfirmPlacement()
-
-
-        // Hande the flip of Unit according to direction 
-        
-
-
-
     }
 
-   
+
+
+
+
 
     // Keep OnRetreatClicked, Initialize, Awake, OnDestroy...
 

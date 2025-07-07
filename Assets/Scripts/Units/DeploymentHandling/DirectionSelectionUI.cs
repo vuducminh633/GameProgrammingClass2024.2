@@ -34,6 +34,7 @@ public class DirectionSelectionUI : MonoBehaviour
         if (directionControl != null)
         {
             directionControl.Initialize(targetUnit);
+            Debug.Log("DirectionSelectionUI initialized with unit: " + unit?.name);
         }
     }
 

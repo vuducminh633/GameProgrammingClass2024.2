@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 459095606}
   selectionUIDocument: {fileID: 854076894}
+  BackSceneName: 
 --- !u!1 &854076893
 GameObject:
   m_ObjectHideFlags: 0

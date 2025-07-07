@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba7378485e80bd34fb2eb60fd8922d35
+guid: 09e8c156f12be06488f38b3bbc47eb43
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: attack TKD tam xa_Frame_0
+  - name: attack TKD tam xa 1_Frame_0
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 467
       height: 703
-    spriteID: 78b3e32aa779f2b4a885b1a6a5c07459
+    spriteID: 854f173843f7a324395047c9297ed1b0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: attack TKD tam xa_Frame_1
+  - name: attack TKD tam xa 1_Frame_1
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 715
       width: 467
       height: 703
-    spriteID: 9c0c5ce1ac3b54646b9a84c66a2a8588
+    spriteID: 72204083095940245b64d86637b7fa71
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,7 +161,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 715}
-  - name: attack TKD tam xa_Frame_2
+  - name: attack TKD tam xa 1_Frame_2
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 4
       width: 467
       height: 703
-    spriteID: e5fbc9f73decdf24f82ff85f2d30a810
+    spriteID: 397d01154603a254d98cbcaa6edb6eb1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 479, y: 4}
-  - name: attack TKD tam xa_Frame_3
+  - name: attack TKD tam xa 1_Frame_3
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 715
       width: 467
       height: 703
-    spriteID: 4dfa0c3618b0a2548bbe05a38d52de95
+    spriteID: 5d92e34521efbd24794aa26c413d79a0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -201,7 +201,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 479, y: 715}
-  - name: attack TKD tam xa_Frame_4
+  - name: attack TKD tam xa 1_Frame_4
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 4
       width: 467
       height: 703
-    spriteID: 9fc62288c3d3e9a459639cb629fd02fd
+    spriteID: d828aaad1f688f942b9668b88b3c41be
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,7 +221,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 954, y: 4}
-  - name: attack TKD tam xa_Frame_5
+  - name: attack TKD tam xa 1_Frame_5
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 715
       width: 467
       height: 703
-    spriteID: 99e1e52b4f0dc304b9c6ec7aa10fd818
+    spriteID: 1a06c23a3e8a8b9468eed04dcea6961b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -241,7 +241,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 954, y: 715}
-  - name: attack TKD tam xa_Frame_6
+  - name: attack TKD tam xa 1_Frame_6
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 4
       width: 467
       height: 703
-    spriteID: 484969d5d6437414b8ba3b89dc85f37f
+    spriteID: 3e13dc57e0ecc8648bc1744e6b856c6c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -261,7 +261,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 1429, y: 4}
-  - name: attack TKD tam xa_Frame_7
+  - name: attack TKD tam xa 1_Frame_7
     originalName: 
     pivot: {x: 0.04496788, y: 0.3200569}
     alignment: 9
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 715
       width: 467
       height: 703
-    spriteID: 311c2b045993ae148b40236106b110c7
+    spriteID: 745b4fa2a0c45764d8ba986129a4ca53
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -284,13 +284,13 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1158101470
-    name: attack TKD tam xa
+    guid: 1679209887
+    name: attack TKD tam xa 1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: attack TKD tam xa_Frame_0
+    - name: attack TKD tam xa 1_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -298,8 +298,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 78b3e32aa779f2b4a885b1a6a5c07459
-    - name: attack TKD tam xa_Frame_1
+      spriteId: 854f173843f7a324395047c9297ed1b0
+    - name: attack TKD tam xa 1_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -307,8 +307,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 9c0c5ce1ac3b54646b9a84c66a2a8588
-    - name: attack TKD tam xa_Frame_2
+      spriteId: 72204083095940245b64d86637b7fa71
+    - name: attack TKD tam xa 1_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -316,8 +316,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: e5fbc9f73decdf24f82ff85f2d30a810
-    - name: attack TKD tam xa_Frame_3
+      spriteId: 397d01154603a254d98cbcaa6edb6eb1
+    - name: attack TKD tam xa 1_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -325,8 +325,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 4dfa0c3618b0a2548bbe05a38d52de95
-    - name: attack TKD tam xa_Frame_4
+      spriteId: 5d92e34521efbd24794aa26c413d79a0
+    - name: attack TKD tam xa 1_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -334,8 +334,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 9fc62288c3d3e9a459639cb629fd02fd
-    - name: attack TKD tam xa_Frame_5
+      spriteId: d828aaad1f688f942b9668b88b3c41be
+    - name: attack TKD tam xa 1_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -343,8 +343,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 99e1e52b4f0dc304b9c6ec7aa10fd818
-    - name: attack TKD tam xa_Frame_6
+      spriteId: 1a06c23a3e8a8b9468eed04dcea6961b
+    - name: attack TKD tam xa 1_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -352,8 +352,8 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 484969d5d6437414b8ba3b89dc85f37f
-    - name: attack TKD tam xa_Frame_7
+      spriteId: 3e13dc57e0ecc8648bc1744e6b856c6c
+    - name: attack TKD tam xa 1_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -361,7 +361,7 @@ ScriptedImporter:
         y: -225
         width: 467
         height: 703
-      spriteId: 311c2b045993ae148b40236106b110c7
+      spriteId: 745b4fa2a0c45764d8ba986129a4ca53
     linkedCells: []
     parentIndex: -1
   platformSettings: []
